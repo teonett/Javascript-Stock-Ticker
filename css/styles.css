@@ -1,0 +1,92 @@
+* { 
+    margin:0; 
+    padding: 0;
+}
+		  
+body {
+    font-family: Helvetica, Verdana;
+    font-size: 12px;
+}
+
+.container {
+    background: #DDD;
+    color: #333;
+    border: 2px solid #999;
+    border-radius: 5px;
+    width: 100%;
+    padding: 10px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+    align-content: center;
+
+}
+
+h1 {
+    text-align: center;
+    margin: 5px 0px;
+    border-bottom: 1px solid #AAA;
+    font-family: Helvetica, Verdana;
+    color: #001f33;
+}
+
+header {
+    position: fixed;
+    top: 0px;
+    color: #ffffff;
+    text-align: center;
+    font-size: xx-large;
+    background-color: #006bb3;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 0px;
+}
+
+footer {
+    position: fixed;
+    bottom:0px;
+    color: #ffffff;
+    background-color: #006bb3;
+    width: 100%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 0px;
+    text-align: center;
+    font-size: large;
+}
+
+table {
+    margin-top: 0px; 
+    margin-left: -5px;
+    height:90px;
+    font-family: Helvetica, Verdana;
+    font-size: 24px;
+    text-align: center;	  
+}
+
+table th {
+    background-color: #002266;
+    color: #ffff00;
+}
+
+table tr:nth-child(even) {
+    background: #005c99;
+    color: #ffff00;
+}
+
+table tr:nth-child(odd) {
+    background: #001f33;
+    color: #ffff00;
+}
+
+#input {
+    max-width: auto;
+    width: 40%;
+}
+
+label {
+    font-size: large;
+}
+
+input {
+    font-size: large;
+}
