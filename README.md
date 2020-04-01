@@ -1,4 +1,4 @@
-<p> Exmple to retrieve realtime stock ticker</p>
+<p> Sample Realtime and historical stock data from https://www.alphavantage.co/</p>
 
 <img src="https://github.com/teonett/Javascript-Stock-Ticker/blob/master/img/ticker001.png">
 
