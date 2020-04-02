@@ -5,7 +5,6 @@ document.addEventListener("keydown", function(e) {
 });
 
 stockSearch();
-//stockInformation();
 
 function stockTicker() {
     stockInformation();
@@ -29,20 +28,31 @@ function stockSearch(){
 function stockInformation() {
 
     let ticker = document.getElementById('stockticket').value;
-    let url = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${ticker.toUpperCase()}&interval=1min&apikey=2X8AHKH6M7SLGS8H`;
+    let tickerName = "";
+
+    let urlName = `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${ticker}&apikey=2X8AHKH6M7SLGS8H`;
+    
+    fetch(urlName).then(function(name) {
+        name.json().then(function(nameData) {
+            let stockName = nameData.bestMatches[0]['2. name'];
+            tickerName = stockName;
+            document.querySelector('.stockName').innerHTML = "Name: " + `<span class="red bold">${stockName}</span>`;
+        });
+    });
+
+    let url = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${ticker.toUpperCase()}&interval=1min&apikey=2X8AHKH6M7SLGS8H`; 
     
     fetch(url).then(function(stockData) { 
-
         stockData.json().then(function(data) {
-            generateInfo(data);
+            generateInfo(data, tickerName);
             stockVariation(data);
             stockInterval(data);
         })
-    
     })
+
 } 
 
-function generateInfo(data){
+function generateInfo(data, stockName){
 
     if (data['Meta Data'] !== "") {
 
@@ -72,18 +82,20 @@ function generateInfo(data){
         let volume = data['Time Series (1min)'][lastRefresh]['5. volume'];
         volume = Number( volume ).toFixed(2);
 
+        
+
         let outputInfo = `
         <div class="container">
             <h1>General Information</h1>
             <table style="width: 100%; text-align: center; font-size: 18px;">
             <tr>
-                <td>Symbol</td>
+                <td>Stock Name</td>
                 <td>Last</td>
                 <td>Size</td>
                 <td>Time Zone</td>
             </tr>
             <tr>    
-                <td><label>${tickerName}</label></td>
+                <td><label>[${tickerName}] ${stockName}</label></td>
                 <td><label>${lastRefresh}</label></td>
                 <td><label>${dataSize}</label></td>
                 <td><label>${timeZone}</label></td>
